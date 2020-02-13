@@ -5,11 +5,17 @@
 
 	$instagram = new Instagram('29653439158.1677ed0.4de3bffee7304ba7845c23b3eca61b2a');
 
-	$media = $instagram->media(['count' => 5]);	
+	$media = $instagram->media(['count' => 5]);
+	
 
-	$comments = $instagram->comments('2242106927400496773_29653439158');
+	foreach ($media as $keyM => $valueM) 
+	{
+		$media[$keyM]->comments = $instagram->comments($valueM->id);
+	}
 
-	// echo"<pre>";print_r($media); die();
 
-	echo "<pre>";print_r($comments); die();
+	
+
+
+	echo "<pre>";print_r($media); die();
 ?>
